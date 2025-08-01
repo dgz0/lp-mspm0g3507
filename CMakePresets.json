@@ -1,0 +1,35 @@
+{
+	"version": 3,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 22,
+		"patch": 1
+	},
+	"configurePresets": [
+		{
+			"name": "cfg-base",
+			"hidden": true,
+			"description": "Build using the Ninja generator",
+			"generator": "Ninja"
+		},
+		{
+			"name": "cfg-dbg",
+			"hidden": true,
+			"description": "Build in debug mode (assertions enabled) using Ninja",
+			"inherits": "cfg-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": {
+					"type": "STRING",
+					"value": "Debug"
+				}
+			}
+		},
+		{
+			"name": "cfg-dbg-arm-none-eabi-gcc",
+			"description": "Build in debug mode (assertions enabled) using Ninja and arm-none-eabi-gcc",
+			"displayName": "Build in debug mode (assertions enabled) using Ninja and arm-none-eabi-gcc",
+			"toolchainFile": "cmake/arm-none-eabi-gcc.cmake",
+			"inherits": "cfg-dbg"
+		}
+	]
+}
