@@ -321,6 +321,8 @@ NOINLINE void hal_isr_default(void)
 
 PLACE_IN_SECTION(".vector_table")
 void (*const vec_tbl[NUM_VEC_TBL_ENTRIES])(void) = {
+	// clang-format off
+
 	[VEC_TBL_ENTRY_SP_main]				= (void(*const)(void))&HAL_STACK_PTR__,
 	[VEC_TBL_ENTRY_Reset]				= hal_isr_Reset,
 	[VEC_TBL_ENTRY_NMI]				= hal_isr_NMI,
@@ -358,4 +360,6 @@ void (*const vec_tbl[NUM_VEC_TBL_ENTRIES])(void) = {
 	[VEC_TBL_ENTRY_RESV45]				= NULL,
 	[VEC_TBL_ENTRY_RTC]				= hal_isr_RTC,
 	[VEC_TBL_ENTRY_DMA]				= hal_isr_DMA
+
+	// clang-format on
 };

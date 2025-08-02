@@ -24,4 +24,6 @@
 
 #include <stddef.h>
 
-#define STATIC_ASSERT_OFFSET(x, member, off) _Static_assert(offsetof((x), (member)) == (off), "Offset is incorrect; check your assumptions.")
+#define STATIC_ASSERT_OFFSET(x, member, off)             \
+	_Static_assert(offsetof((x), (member)) == (off), \
+		       "Offset is incorrect; check your assumptions.")
