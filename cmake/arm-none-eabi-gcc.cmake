@@ -49,7 +49,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # Use newlib-nano; it is optimized for size and omits some exotic features that
 # are not likely to be used.
-set(CMAKE_EXE_LINKER_FLAGS_INIT "--specs=nano.specs")
+set(CMAKE_EXE_LINKER_FLAGS_INIT "--specs=nano.specs -mcpu=cortex-m0plus -mthumb")
 
 set(CMAKE_C_COMPILER   arm-none-eabi-gcc)
 set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
@@ -65,11 +65,14 @@ execute_process(
 # These flags are set regardless of the build type.
 set(STANDARD_FLAGS
         -mcpu=cortex-m0plus
+        -march=armv6-m
         -mthumb
         -ffunction-sections
         -fdata-sections
         -Wall
         -Wextra
+        -ggdb3
+        -Os
         -std=gnu17
         -Wl,--gc-sections,--Map=output.map
 )

@@ -20,16 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/** @file main.c Defines the program entry point routines. */
+#pragma once
 
-#include "hal_asm.h"
+#include <stddef.h>
 
-/** Program entry point. */
-int main(void)
-{
-	for (;;) {
-		__NOP();
-	}
-
-	return 0;
-}
+#define STATIC_ASSERT_OFFSET(x, member, off) _Static_assert(offsetof((x), (member)) == (off), "Offset is incorrect; check your assumptions.")

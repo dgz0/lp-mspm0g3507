@@ -26,4 +26,8 @@ set(SRCS
         newlib_syscalls.c)
 
 add_executable(lp-mspm0g3507-playground ${SRCS})
+
+string(APPEND CMAKE_EXE_LINKER_FLAGS " -T ${CMAKE_SOURCE_DIR}/src/lp-mspm0g3507-playground.ld")
+
+#set_linker_script(lp-mspm0g3507-playground ${CMAKE_SOURCE_DIR}/src/lp-mspm0g3507-playground.ld)
 print_firmware_size(lp-mspm0g3507-playground)
